@@ -1,7 +1,6 @@
-// models/todoModel.js
+
 const mongoose = require('mongoose');
 
-// Define the ToDo schema
 const todoSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
@@ -9,6 +8,6 @@ const todoSchema = new mongoose.Schema({
   time: { type: String, required: true }
 },{timestamps:true});
 
-// Create and export the ToDo model
+
 const Todo = mongoose.model('Todo', todoSchema);
 module.exports = Todo;

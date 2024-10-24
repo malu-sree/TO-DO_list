@@ -1,7 +1,8 @@
-// controllers/todoController.js
+
+const { json } = require('body-parser');
 const Todo = require('../models/todoModel');
 
-// Create a new ToDo
+
 const createTodo = async (req, res) => {
   const { title, description, date, time } = req.body;
   try {
@@ -18,7 +19,7 @@ const createTodo = async (req, res) => {
   }
 };
 
-// Get all ToDos
+
 const getTodos = async (req, res) => {
   try {
     const todos = await Todo.find();
@@ -28,7 +29,14 @@ const getTodos = async (req, res) => {
   }
 };
 
+//fetch data 
+const getToDolist=async(res,req)=>{
+  const todolist=await Todo.find()
+  todolist.length>0?res.json(todolist):res.json([])
+}
+
 module.exports = {
   createTodo,
   getTodos,
+  getToDolist
 };

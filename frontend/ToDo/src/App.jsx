@@ -1,55 +1,47 @@
 import React, { useState } from 'react';
-import { Button, AppBar, Toolbar, Typography, Container, Card, CardContent } from '@mui/material';
-import TodoForm from './todo'; // Ensure this matches your file name
+import { Button, AppBar, Toolbar, Typography, Container } from '@mui/material';
+import WelcomePage from './welcomepage'; // Import the WelcomePage component
+import TodoForm from './todo'; // Import the form component
+import Viewtodolist from './viewtodolist'; // Import the ToDo List view component
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'; // Import your CSS for background styles
-import todo from './images/img1.avif'
+import './App.css'; // Import any custom CSS
 
 function App() {
-  const [showForm, setShowForm] = useState(false);
+  const [view, setView] = useState('welcome'); // 'welcome', 'add', or 'list'
 
-  const toggleForm = () => {
-    setShowForm(!showForm);
+  // Function to handle view switching
+  const handleViewChange = (newView) => {
+    setView(newView);
   };
 
   return (
     <div>
+      {/* AppBar with buttons for navigation */}
       <AppBar position="static" style={{ backgroundColor: '#4A148C', boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)' }}>
         <Toolbar>
           <Typography variant="h6" style={{ flexGrow: 1 }}>
             ToDo Application
           </Typography>
-          <Button variant="contained" color="primary" onClick={toggleForm}>
-            {showForm ? 'Home' : 'Add ToDo'}
+          {/* Home Button to navigate to Welcome Page */}
+          <Button variant="contained" color="default" onClick={() => handleViewChange('welcome')}>
+            Home
           </Button>
+          {/* Button to navigate to Add ToDo Form */}
+          {/* <Button variant="contained" color="primary" onClick={() => handleViewChange('add')}>
+            Add ToDo
+          </Button> */}
+          {/* Button to navigate to View ToDo List */}
+          {/* <Button variant="contained" color="secondary" onClick={() => handleViewChange('list')}>
+            View ToDo List
+          </Button> */}
         </Toolbar>
       </AppBar>
 
       <Container>
-        {showForm ? (
-          <Card elevation={3} style={{ marginTop: '20px' }}>
-            <CardContent>
-              <TodoForm />
-            </CardContent>
-          </Card>
-        ) : (
-          <Container className="mt-5 text-center">
-            <Typography variant="h4" style={{ color: 'black', fontWeight: 'bold' }} gutterBottom>
-              Welcome to the ToDo App
-            </Typography>
-            <Typography variant="body1" style={{ color: 'black' }}>
-              Click on "Add ToDo" to create a new task.
-            </Typography>
-            {/* Image Section */}
-            <div style={{ marginTop: '20px' }}>
-              <img
-                src={todo} // Replace with your image path
-                alt="ToDo Illustration"
-                style={{ width: '100%', maxWidth: '600px', borderRadius: '8px' }} // Adjust styles as needed
-              />
-            </div>
-          </Container>
-        )}
+        {/* Conditional rendering based on the current view */}
+        {view === 'welcome' && <WelcomePage handleViewChange={handleViewChange} />}
+        {view === 'add' && <TodoForm />}
+        {view === 'list' && <Viewtodolist />}
       </Container>
     </div>
   );

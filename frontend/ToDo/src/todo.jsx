@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { TextField, Button, Container, Typography, Grid, Paper, InputAdornment } from '@mui/material';
-import { AccessAlarm, Description, Title } from '@mui/icons-material'; // Import icons from Material-UI
+import { AccessAlarm, Description, Title } from '@mui/icons-material'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TodoForm() {
@@ -9,18 +9,18 @@ function TodoForm() {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [message, setMessage] = useState(''); // State for the message
+  const [message, setMessage] = useState(''); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const todoItem = { title, description, date, time };
 
-    // Send this data to the backend using Axios
+    
     axios.post('http://localhost:5000/api/todos', todoItem)
       .then((response) => {
         console.log('Success:', response.data);
-        setMessage('Todo item added successfully!'); // Set success message
-        // Reset the form after submission
+        setMessage('Todo item added successfully!'); 
+       
         setTitle('');
         setDescription('');
         setDate('');
@@ -113,7 +113,7 @@ function TodoForm() {
           </Grid>
         </Grid>
       </form>
-      {/* Display message if available */}
+
       {message && (
         <Typography variant="body1" align="center" style={{ marginTop: '20px', color: 'green' }}>
           {message}
