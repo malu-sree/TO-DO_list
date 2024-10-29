@@ -35,8 +35,29 @@ const getToDolist=async(res,req)=>{
   todolist.length>0?res.json(todolist):res.json([])
 }
 
+//delete 
+// const todolistDelete=async(res,req)=>{
+//   const idno=req.params.id;
+//   console.log(idno)
+//   await Todo.deleteOne({_id:idno})
+//   res.json("data is deleted")
+// }
+const todolistDelete = async (req, res) => {
+  const idno = req.params.id;
+  try {
+    const deletedTodo = await Todo.deleteOne({ _id: idno });
+    if (deletedTodo.deletedCount === 0) {
+      return res.status(404).json({ message: 'Todo item not found' });
+    }
+    res.json({ message: 'Todo item deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete todo item' });
+  }
+};
+
 module.exports = {
   createTodo,
   getTodos,
-  getToDolist
+  getToDolist,
+  todolistDelete
 };
