@@ -12,14 +12,14 @@ const WelcomePage = ({ handleViewChange }) => {
         Use the app to manage your tasks efficiently. Click below to get started.
       </Typography>
 
-      <div style={{ marginTop: '20px' }}>
+      {/* <div style={{ marginTop: '20px' }}>
         <Button variant="contained" color="primary" onClick={() => handleViewChange('add')} style={{ marginRight: '10px' }}>
           Add ToDo
         </Button>
         <Button variant="contained" color="secondary" onClick={() => handleViewChange('list')}>
           View ToDo List
         </Button>
-      </div>
+      </div> */}
 
       <div style={{ marginTop: '20px' }}>
         <img

@@ -4,7 +4,7 @@ import { TextField, Button, Container, Typography, Grid, Paper, InputAdornment }
 import { AccessAlarm, Description, Title } from '@mui/icons-material'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function TodoForm() {
+function Edittodolist() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -123,4 +123,4 @@ function TodoForm() {
   );
 }
 
-export default TodoForm;
+export default Edittodolist;
