@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const todoRoutes = require('./routes/todoRouter');
+const user=require('./routes/user');
 
 const app = express();
 const port = 5000;
@@ -20,6 +21,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/todo_db',)
 
 
 app.use('/api/todos', todoRoutes);
+
+app.use('/user',user)
+
 
 
 app.listen(port, () => {

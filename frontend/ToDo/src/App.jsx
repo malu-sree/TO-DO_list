@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Container } from '@mui/material';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import TodoForm from './todo';
 import WelcomePage from './welcomepage';
 import Viewtodolist from './viewtodolist';
 import Edittodolist from './edittodolist';
+import Userreg from './user/userregister';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
           <Button color="inherit" component={Link} to="/">Home</Button>
           <Button color="inherit" component={Link} to="/view">View ToDos</Button>
           <Button color="inherit" component={Link} to="/add">Add ToDo</Button>
+          <Button color="inherit" component={Link} to="/reg">Register</Button>
         </Toolbar>
       </AppBar>
 
@@ -26,6 +29,7 @@ function App() {
           <Route path="/add" element={<TodoForm />} />
           <Route path="/view" element={<Viewtodolist />} />
           <Route path="/edit/:id" element={<Edittodolist />} />
+          <Route path="/reg" element={<Userreg/>} />
         </Routes>
       </Container>
     </Router>
