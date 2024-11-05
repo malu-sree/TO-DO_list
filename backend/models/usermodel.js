@@ -1,32 +1,14 @@
-const userModel=require('../models/usermodel')
-const upload=require("../multerfiles/userupload")
-const bcrypt=require('bcrypt')
-let salt=10;
-const register=async(req,res)=>{
-    const {fullname,email,password}=req.body;
-    const result=await userModel.find({email:email})
-    if(result.length>0){
-        res.json({status:0,msg:"email already exist"})
-    }
-    else
-    {
-       console.log(req.file.orginalname)
-      bcrypt.hash(password,salt,function(err,hash){
-         userModel.create({
-            fullname:fullname,
-            email:email,
-            password:hash,
-            images:req.file.filename,
 
 
-         })
-      })
-      res.json({status:1,msg:"register"})
-    }
-   
-}
+const mongoose = require('mongoose');
 
+const userSchema = new mongoose.Schema({
+    fullname: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    images: { type: String } // Store filename of uploaded image
+});
 
-module.exports={
-    register
-}
+const userModel = mongoose.model('User', userSchema);
+
+module.exports = userModel;

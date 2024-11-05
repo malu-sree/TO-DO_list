@@ -7,6 +7,7 @@ import WelcomePage from './welcomepage';
 import Viewtodolist from './viewtodolist';
 import Edittodolist from './edittodolist';
 import Userreg from './user/userregister';
+import Login from './user/login';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/view" element={<Viewtodolist />} />
           <Route path="/edit/:id" element={<Edittodolist />} />
           <Route path="/reg" element={<Userreg/>} />
+          <Route path='/login' element={<Login/>}/>
         </Routes>
       </Container>
     </Router>
