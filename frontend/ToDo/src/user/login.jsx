@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const nav = useNavigate();
-  const [login, setLogin] = useState({ email: '', password: '' }); // Initialize with empty strings
+  const [login, setLogin] = useState({ email: '', password: '' }); 
 
   const changeValue = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
